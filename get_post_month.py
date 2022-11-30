@@ -16,11 +16,9 @@ def get_post_month(data: dict, month: int) -> int:
     # Loop through the dictionary
     for e in data["messages"]:
         type_ = e["type"]
-        s = e["date"]
-        x = int(s[5:7])
-        if x == month and type_ == "message":
+        month_ = int(e["date"][5:7])
+        if month_ == month and type_ == "message":
             count += 1
-  
     return count
 
 # Path of the file to read
