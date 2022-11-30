@@ -16,3 +16,6 @@ def fromJson(file_path: str)->dict:
     data = json.loads(f)
 
     return data
+
+
+print(fromJson("data/result.json"))
