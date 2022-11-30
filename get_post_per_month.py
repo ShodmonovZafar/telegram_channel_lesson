@@ -1,12 +1,15 @@
 from read_data import fromJson
-from get_post_month import get_post_month
-def get_post_per_month(data:dict)->dict:
+
+def get_post_per_month(data: dict) -> dict:
     map_ = {}
     for i in range(1, 13):
-        p = get_post_month(data, i)
-        map_[i] = p
-    
-  
+        map_[i] = 0
+    for e in data["messages"]:
+        type_ = e["type"]
+        s = e["date"]
+        x = int(s[5:7])
+        if type_ == "message":
+            map_[x] += 1
     
     return map_
 
