@@ -28,4 +28,5 @@ with open(path_to_the_json_document, "r", encoding='utf8') as f:
     data = json.load(f)
 
 natija = get_post_per_week(data, 10)
+# {1: 68, 2: 77, 3: 76, 4: 93, 5: 20}
 print(natija)
