@@ -1,4 +1,5 @@
 import json
+import datetime
 from read_data import fromJson
 
 def get_post_per_week(data: dict, month: int) -> dict:
@@ -7,16 +8,16 @@ def get_post_per_week(data: dict, month: int) -> dict:
         map_[j] = 0
         
     for i in data["messages"]:
-        
-        if i["type"] == "message" and int(i["date"][5:7]) == month:
-            week_ = int(i["date"][8:10])
-            if 1 <= week_ <= 7:
+        date_ = datetime.datetime.strptime(i["date"], "%Y-%m-%dT%H:%M:%S")
+        if i["type"] == "message" and date_.month == month:
+            day_ = date_.day
+            if 1 <= day_ <= 7:
                 map_[1] += 1
-            elif 7 < week_ <= 14:
+            elif 7 < day_ <= 14:
                 map_[2] += 1
-            elif 14 < week_ <= 21:
+            elif 14 < day_ <= 21:
                 map_[3] += 1
-            elif 21 < week_ <= 28:
+            elif 21 < day_ <= 28:
                 map_[4] += 1
             else:
                 map_[5] += 1
