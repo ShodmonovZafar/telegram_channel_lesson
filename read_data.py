@@ -11,10 +11,10 @@ def fromJson(file_path: str) -> dict:
     
     """
     # open file
-    f = open(file_path, "r", encoding='utf8').read()
-    #load json
-    data = json.loads(f)
-
+    with open(file_path, "r", encoding="utf8") as f:
+        # f = open(file_path, "r", encoding='utf8').read()
+        # load json
+        data = json.load(f)
     return data
 
 
