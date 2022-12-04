@@ -19,3 +19,4 @@ def get_post_weekday(data: dict) -> dict:
 
 data = fromJson("data/result.json")
 print(get_post_weekday(data))
+# Output: {0: 178, 1: 8, 2: 214, 3: 9, 4: 232, 5: 9, 6: 6}
