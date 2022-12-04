@@ -1,3 +1,4 @@
+import datetime
 from read_data import fromJson
 
 def get_post_per_month(data: dict) -> dict:
@@ -9,7 +10,8 @@ def get_post_per_month(data: dict) -> dict:
         
     for e in data["messages"]:
         type_ = e["type"]
-        month_ = int(e["date"][5:7])
+        date_ = datetime.datetime.strptime(e["date"], "%Y-%m-%dT%H:%M:%S")
+        month_ = date_.month
         if type_ == "message":
             map_[month_] += 1
     return map_
@@ -22,3 +24,4 @@ data = fromJson(file_path)
 # Get the number of posts for the month of September
 count = get_post_per_month(data)
 print(count)
+# Output: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 30, 10: 334, 11: 292, 12: 0}
